@@ -1,6 +1,22 @@
 package global.acme_snippets.system_type.entitlements
 
 import data.library.parameters
+
+#############################################################################
+# METADATA: library-snippet
+# version: v1
+# title: "ACME: Test"
+# diagnostics:
+#   - entz_object_check_actions
+#   - action_exists
+# description: >-
+#   ACME :Test
+#############################################################################
+test[msg] {
+	msg := "test"
+}
+
+
 #############################################################################
 # METADATA: library-snippet
 # version: v1
