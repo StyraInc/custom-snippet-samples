@@ -5,6 +5,21 @@ import data.library.parameters
 #############################################################################
 # METADATA: library-snippet
 # version: v1
+# title: "ACME: aaaa"
+# diagnostics:
+#   - entz_object_check_actions
+#   - action_exists
+# description: >-
+#   This is the ACME hello world snippet that shows the basic facility for a
+#   snippet with no parameters, and a silly message being returned.
+#############################################################################
+aaaa[msg] {
+	msg := "Hello World!"
+}
+
+#############################################################################
+# METADATA: library-snippet
+# version: v1
 # title: "ACME: Hello World Snippet"
 # diagnostics:
 #   - entz_object_check_actions
