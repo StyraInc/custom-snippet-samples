@@ -1,4 +1,4 @@
-package global.snippets.system_type.entitlements
+package global.acme_snippets.system_type.entitlements
 
 import data.library.parameters
 #############################################################################
