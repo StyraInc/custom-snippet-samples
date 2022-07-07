@@ -9,7 +9,7 @@ import data.library.parameters
 #   - entz_object_check_actions
 #   - action_exists
 # description: >-
-#   Matches requests where the input action is missing or is NOT contained
+#   ACME : Matches requests where the input action is missing or is NOT contained
 #   within the object model's user list.
 #############################################################################
 action_is_not_valid[msg] {
@@ -33,7 +33,7 @@ action_is_not_valid[msg] {
 #   - entz_object_check_users
 #   - subject_exists
 # description: >-
-#   Matches requests where the input subject is missing or is NOT contained
+#   ACME : Matches requests where the input subject is missing or is NOT contained
 #   within the object model's user list.
 #############################################################################
 user_is_not_valid[msg] {
