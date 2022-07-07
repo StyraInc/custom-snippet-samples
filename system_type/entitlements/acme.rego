@@ -5,15 +5,16 @@ import data.library.parameters
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Test"
+# title: "ACME: Hello World Snippet"
 # diagnostics:
 #   - entz_object_check_actions
 #   - action_exists
 # description: >-
-#   ACME :Test
+#   This is the ACME hello world snippet that shows the basic facility for a
+#   snippet with no parameters, and a silly message being returned.
 #############################################################################
 test[msg] {
-	msg := "test"
+	msg := "Hello World!"
 }
 
 
