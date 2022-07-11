@@ -5,7 +5,7 @@ import data.library.parameters
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Hello World Snippet"
+# title: "ACME: Custom Snippet 1"
 # diagnostics:
 #   - entz_object_check_actions
 #   - action_exists
@@ -13,14 +13,14 @@ import data.library.parameters
 #   This is the ACME hello world snippet that shows the basic facility for a
 #   snippet with no parameters, and a silly message being returned.
 #############################################################################
-test[msg] {
+cusom_snippet_1[msg] {
 	msg := "Hello World"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Hello World Snippet with parameter"
+# title: "ACME: Custom Snippet 2"
 # diagnostics:
 #   - entz_object_check_actions
 #   - action_exists
@@ -40,7 +40,7 @@ test[msg] {
 #         package: "object"
 #         query: "actions"
 #############################################################################
-helloworld[msg] {
+cusom_snippet_2[msg] {
 	msg := sprintf("Hello World parameters entered %s", [data.library.parameters.actions])
 }
 
