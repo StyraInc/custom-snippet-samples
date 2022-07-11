@@ -26,7 +26,7 @@ import data.library.parameters
 #         query: "actions"
 #############################################################################
 test[msg] {
-	msg := data.library.parameters.actions
+	msg := sprintf("HelloWorld parameters entered %s", [data.library.parameters.actions])
 }
 
 
