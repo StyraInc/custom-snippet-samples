@@ -8,13 +8,11 @@ import data.library.parameters
 # title: "ACME: Custom Snippet 1"
 # diagnostics:
 #   - entz_object_check_actions
-#   - action_exists
 # description: >-
-#   This is the ACME hello world snippet that shows the basic facility for a
-#   snippet with no parameters, and a silly message being returned.
+#   This custom snippet is the most basic, just returning the "msg" to the requester
 #############################################################################
 cusom_snippet_1[msg] {
-	msg := "Hello World"
+	msg := "ACME: Custom Snippet 1"
 }
 
 #############################################################################
@@ -23,7 +21,6 @@ cusom_snippet_1[msg] {
 # title: "ACME: Custom Snippet 2"
 # diagnostics:
 #   - entz_object_check_actions
-#   - action_exists
 # description: >-
 #   This is the ACME hello world snippet that shows the basic facility for a
 #   snippet with parameters, and a silly message being returned.
@@ -41,6 +38,6 @@ cusom_snippet_1[msg] {
 #         query: "actions"
 #############################################################################
 cusom_snippet_2[msg] {
-	msg := sprintf("Hello World parameters entered %s", [data.library.parameters.actions])
+	msg := sprintf("ACME: Custom Snippet 2 parameters %s", [data.library.parameters.actions])
 }
 
