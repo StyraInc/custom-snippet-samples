@@ -54,7 +54,7 @@ cusom_snippet_1[msg] {
 #         type: string
 #       uniqueItems: true
 #       "hint:items":
-#         package: "global.acme_snippets.system_type.entitlements"
+#         package: "data.global.acme_snippets.system_type.entitlements"
 #         query: "inthefile"
 #############################################################################
 cusom_snippet_2[msg] {
