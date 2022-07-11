@@ -12,6 +12,18 @@ import data.library.parameters
 # description: >-
 #   This is the ACME hello world snippet that shows the basic facility for a
 #   snippet with no parameters, and a silly message being returned.
+# schema:
+#   type: object
+#   properties:
+#     actions:
+#       type: array
+#       title: "Match Actions"
+#       items:
+#         type: string
+#       uniqueItems: true
+#       "hint:items":
+#         package: "object"
+#         query: "actions"
 #############################################################################
 test[msg] {
 	msg := "Hello World!"
