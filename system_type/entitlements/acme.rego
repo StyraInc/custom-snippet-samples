@@ -15,7 +15,7 @@ import data.library.parameters
 # schema:
 #   type: object
 #   properties:
-#     actionssss:
+#     actions:
 #       type: array
 #       title: "Match Actions"
 #       items:
