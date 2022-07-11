@@ -21,7 +21,7 @@ test[msg] {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Hello World Snippet w/parameter"
+# title: "ACME: Hello World Snippet with parameter"
 # diagnostics:
 #   - entz_object_check_actions
 #   - action_exists
