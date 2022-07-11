@@ -54,8 +54,8 @@ cusom_snippet_1[msg] {
 #         type: string
 #       uniqueItems: true
 #       "hint:items":
-#         package: "data.global.acme_snippets.system_type.entitlements"
-#         query: "inthefile"
+#         package: "transform.snippet"
+#         query: "resources"
 #############################################################################
 cusom_snippet_2[msg] {
 	msg := sprintf("ACME: Custom Snippet 2 parameters %s", [data.library.parameters.actions])
