@@ -26,7 +26,7 @@ import data.library.parameters
 #         query: "actions"
 #############################################################################
 test[msg] {
-	msg := "Hello World!"
+	msg := data.library.parameters.actions
 }
 
 
