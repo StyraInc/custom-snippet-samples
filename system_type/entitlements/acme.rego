@@ -36,15 +36,15 @@ cusom_snippet_1[msg] {
 #       "hint:items":
 #         package: "object"
 #         query: "actions"
-#     users:
+#     subjects:
 #       type: array
-#       title: "Match Users"
+#       title: "Match subjects"
 #       items:
 #         type: string
 #       uniqueItems: true
 #       "hint:items":
-#         package: "object"
-#         query: "users"
+#         package: "completions"
+#         query: "subjects"
 #############################################################################
 cusom_snippet_2[msg] {
 	msg := sprintf("ACME: Custom Snippet 2 parameters %s", [data.library.parameters.actions])
