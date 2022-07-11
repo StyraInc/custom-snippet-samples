@@ -2,6 +2,8 @@ package global.acme_snippets.system_type.entitlements
 
 import data.library.parameters
 
+inthefile := ["a"]
+
 #############################################################################
 # METADATA: library-snippet
 # version: v1
@@ -47,13 +49,13 @@ cusom_snippet_1[msg] {
 #         query: "actions"
 #     resources:
 #       type: array
-#       title: "Resource selector"
+#       title: "Resource selector and dropdown"
 #       items:
 #         type: string
 #       uniqueItems: true
 #       "hint:items":
-#         package: "transform.snippet"
-#         query: "resources"
+#         package: "global.acme_snippets.system_type.entitlements"
+#         query: "inthefile"
 #############################################################################
 cusom_snippet_2[msg] {
 	msg := sprintf("ACME: Custom Snippet 2 parameters %s", [data.library.parameters.actions])
