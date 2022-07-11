@@ -52,7 +52,7 @@ cusom_snippet_1[msg] {
 #         type: string
 #       uniqueItems: true
 #       "hint:items":
-#         package: "completions"
+#         package: "transform.snippet"
 #         query: "resources"
 #############################################################################
 cusom_snippet_2[msg] {
