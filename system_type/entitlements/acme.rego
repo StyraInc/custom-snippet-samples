@@ -2,7 +2,6 @@ package global.acme_snippets.system_type.entitlements
 
 import data.library.parameters
 
-
 #############################################################################
 # METADATA: library-snippet
 # version: v1
@@ -41,7 +40,7 @@ test[msg] {
 #         package: "object"
 #         query: "actions"
 #############################################################################
-test[msg] {
+helloworld[msg] {
 	msg := sprintf("Hello World parameters entered %s", [data.library.parameters.actions])
 }
 
