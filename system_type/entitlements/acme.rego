@@ -27,15 +27,6 @@ cusom_snippet_1[msg] {
 # schema:
 #   type: object
 #   properties:
-#     actions:
-#       type: array
-#       title: "Match Actions"
-#       items:
-#         type: string
-#       uniqueItems: true
-#       "hint:items":
-#         package: "object"
-#         query: "actions"
 #     subjects:
 #       type: array
 #       title: "Match subjects"
@@ -45,6 +36,24 @@ cusom_snippet_1[msg] {
 #       "hint:items":
 #         package: "completions"
 #         query: "subjects"
+#     actions:
+#       type: array
+#       title: "Match Actions"
+#       items:
+#         type: string
+#       uniqueItems: true
+#       "hint:items":
+#         package: "object"
+#         query: "actions"
+#     resources:
+#       type: array
+#       title: "Resource selector"
+#       items:
+#         type: string
+#       uniqueItems: true
+#       "hint:items":
+#         package: "completions"
+#         query: "resources"
 #############################################################################
 cusom_snippet_2[msg] {
 	msg := sprintf("ACME: Custom Snippet 2 parameters %s", [data.library.parameters.actions])
