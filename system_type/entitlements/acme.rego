@@ -35,8 +35,6 @@ custom_snippet_1[msg] {
 #       items:
 #         type: string
 #       uniqueItems: true
-#   required:
-#     - subjects
 #############################################################################
 custom_snippet_2[msg] {
 	msg := sprintf("ACME: Custom Snippet-2 parameters subjects(%s)", [data.library.parameters.subjects])
