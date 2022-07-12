@@ -58,6 +58,6 @@ cusom_snippet_1[msg] {
 #         query: "resources"
 #############################################################################
 cusom_snippet_2[msg] {
-	msg := sprintf("ACME: Custom Snippet 2 parameters %s, %s, %s", [data.library.parameters.subjects, data.library.parameters.resources])
+	msg := sprintf("ACME: Custom Snippet 2 parameters %s, %s, %s", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
 
