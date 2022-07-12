@@ -7,25 +7,48 @@ inthefile := ["a"]
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet 1"
+# title: "ACME: Custom Snippet-1"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 #############################################################################
 cusom_snippet_1[msg] {
-	msg := "ACME: Custom Snippet 1"
+	msg := "ACME: Custom Snippet-1"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet 2"
+# title: "ACME: Custom Snippet-2"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
-#   This is the ACME hello world snippet that shows the basic facility for a
-#   snippet with parameters, and a silly message being returned.
+#   This custom snippet asks the user to enter one parameter, the subjects (aka users).  
+#   It does not provide any guidance for those values.
+# schema:
+#   type: object
+#   properties:
+#     subjects:
+#       type: array
+#       title: "Match subjects"
+#       items:
+#         type: string
+#       uniqueItems: true
+#############################################################################
+cusom_snippet_2[msg] {
+	msg := sprintf("ACME: Custom Snippet-2 parameters subjects(%s)", [data.library.parameters.subjects])
+}
+
+#############################################################################
+# METADATA: library-snippet
+# version: v1
+# title: "ACME: Custom Snippet-3"
+# diagnostics:
+#   - entz_object_check_actions
+# description: >-
+#   This custom snippet asks the users for 3 different parameters, subjects, actions, resources.
+#   For each one of these parameters, it provides hints as to what the values are that the user should select from
 # schema:
 #   type: object
 #   properties:
@@ -57,7 +80,7 @@ cusom_snippet_1[msg] {
 #         package: "transform.snippet"
 #         query: "resources"
 #############################################################################
-cusom_snippet_2[msg] {
-	msg := sprintf("ACME: Custom Snippet 2 parameters subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
+cusom_snippet_3[msg] {
+	msg := sprintf("ACME: Custom Snippet-3 parameters subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
 
