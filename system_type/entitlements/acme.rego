@@ -14,6 +14,16 @@ object_resources = data.object.resources {
 	true
 }
 
+object_has_all_attributes(object, attributes) {
+	matches := [match |
+		attr_value := attributes[attr_key]
+		object[attr_key] == attr_value
+		match := true
+	]
+
+	count(matches) == count(attributes)
+}
+
 #############################################################################
 # METADATA: library-snippet
 # version: v1
@@ -119,15 +129,6 @@ custom_snippet_3[msg] {
 #   required:
 #     - attributes
 #############################################################################
-object_has_all_attributes(object, attributes) {
-	matches := [match |
-		attr_value := attributes[attr_key]
-		object[attr_key] == attr_value
-		match := true
-	]
-
-	count(matches) == count(attributes)
-}
 acme_user_has_attributes[msg] {
 	object_has_all_attributes(object_users[input.subject], parameters.attributes)
 	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
