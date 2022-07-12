@@ -84,6 +84,8 @@ custom_snippet_3[msg] {
 	msg := sprintf("ACME: Custom Snippet-3 parameters subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
 
+
+#############################################################################
 # METADATA: library-snippet
 # version: v1
 # title: "ACME: Custom Snippet-4"
@@ -107,8 +109,8 @@ custom_snippet_3[msg] {
 #   additionalProperties: false
 #   required:
 #     - attributes
-
-user_has_attributes[msg] {
+#############################################################################
+acme_user_has_attributes[msg] {
 	object_has_all_attributes(object_users[input.subject], parameters.attributes)
 	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
 }
