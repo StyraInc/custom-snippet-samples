@@ -83,3 +83,33 @@ custom_snippet_2[msg] {
 custom_snippet_3[msg] {
 	msg := sprintf("ACME: Custom Snippet-3 parameters subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
+
+
+# METADATA: library-snippet
+# version: v1
+# title: "ACME: User has attributes"
+# diagnostics:
+#   - entz_object_check_users
+#   - subject_exists
+#   - subject_has_attributes
+# description: >-
+#   Matches requests where the user making a request has all of the selected attributes.
+# schema:
+#   type: object
+#   properties:
+#     attributes:
+#       type: object
+#       title: Attributes
+#       patternNames:
+#         title: "Key"
+#       additionalProperties:
+#         type: string
+#         title: "Value"
+#   additionalProperties: false
+#   required:
+#     - attributes
+
+user_has_attributes[msg] {
+	object_has_all_attributes(object_users[input.subject], parameters.attributes)
+	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
+}
