@@ -13,7 +13,7 @@ inthefile := ["a"]
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 #############################################################################
-cusom_snippet_1[msg] {
+custom_snippet_1[msg] {
 	msg := "ACME: Custom Snippet-1"
 }
 
@@ -35,8 +35,10 @@ cusom_snippet_1[msg] {
 #       items:
 #         type: string
 #       uniqueItems: true
+#   required:
+#     - subjects
 #############################################################################
-cusom_snippet_2[msg] {
+custom_snippet_2[msg] {
 	msg := sprintf("ACME: Custom Snippet-2 parameters subjects(%s)", [data.library.parameters.subjects])
 }
 
@@ -80,7 +82,35 @@ cusom_snippet_2[msg] {
 #         package: "transform.snippet"
 #         query: "resources"
 #############################################################################
-cusom_snippet_3[msg] {
+custom_snippet_3[msg] {
 	msg := sprintf("ACME: Custom Snippet-3 parameters subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
 
+# METADATA: library-snippet
+# version: v1
+# title: "ACME: Custom Snippet-4"
+# diagnostics:
+#   - entz_object_check_users
+#   - subject_exists
+#   - subject_has_attributes
+# description: >-
+#   Matches requests where the user making a request has all of the selected attributes.
+# schema:
+#   type: object
+#   properties:
+#     attributes:
+#       type: object
+#       title: Attributes
+#       patternNames:
+#         title: "Key"
+#       additionalProperties:
+#         type: string
+#         title: "Value"
+#   additionalProperties: false
+#   required:
+#     - attributes
+
+user_has_attributes[msg] {
+	object_has_all_attributes(object_users[input.subject], parameters.attributes)
+	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
+}
