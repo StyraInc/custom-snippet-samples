@@ -1,8 +1,18 @@
 package global.acme_snippets.system_type.entitlements
 
-import data.library.parameters
+import data.library.parameters 
 
-inthefile := ["a"]
+object_users = data.object.users {
+	true
+} else = {} {
+	true
+}
+
+object_resources = data.object.resources {
+	true
+} else = {} {
+	true
+}
 
 #############################################################################
 # METADATA: library-snippet
