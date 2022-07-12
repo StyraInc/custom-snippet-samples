@@ -109,11 +109,6 @@ custom_snippet_3[msg] {
 #   required:
 #     - attributes
 #############################################################################
-acme_user_has_attributes[msg] {
-	object_has_all_attributes(object_users[input.subject], parameters.attributes)
-	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
-}
-
 object_has_all_attributes(object, attributes) {
 	matches := [match |
 		attr_value := attributes[attr_key]
@@ -122,4 +117,8 @@ object_has_all_attributes(object, attributes) {
 	]
 
 	count(matches) == count(attributes)
+}
+acme_user_has_attributes[msg] {
+	object_has_all_attributes(object_users[input.subject], parameters.attributes)
+	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
 }
