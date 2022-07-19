@@ -131,6 +131,9 @@ custom_snippet_3[msg] {
 #   required:
 #     - attributes
 # policy:
+#   rule:
+#     type: rego
+#     value: "{{library-snippet}}[obj]"
 #   schema:
 #     decision:
 #       oneOf: []
