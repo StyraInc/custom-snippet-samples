@@ -136,7 +136,7 @@ custom_snippet_3[msg] {
 #         value: "obj.entz"
 #       message:
 #         type: rego
-#         obj.message
+#         value: "obj.message"
 #     required:
 #       - entz
 #       - message
