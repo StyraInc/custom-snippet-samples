@@ -153,7 +153,7 @@ acme_user_has_attributes[obj] {
 		"attributes": parameters.attributes,
 	}
 	obj := {
-		"msg": msg,
+		"message": msg,
 		"entz": entz,
 	}
 }
