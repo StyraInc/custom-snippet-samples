@@ -127,11 +127,48 @@ custom_snippet_3[msg] {
 #       additionalProperties:
 #         type: string
 #         title: "Value"
+#   decision:
+#     oneOf: []
+#     type: object
+#     properties:
+#       entz:
+#         type: rego
+#         value: "obj.entz"
+#       message:
+#         type: rego
+#         obj.message
+#     required:
+#       - entz
+#       - message
 #   additionalProperties: false
 #   required:
 #     - attributes
 #############################################################################
-acme_user_has_attributes[msg] {
+acme_user_has_attributes[obj] {
 	object_has_all_attributes(object_users[input.subject], parameters.attributes)
 	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
+	entz := {
+		"snippet": "acme_snippets/acme_user_has_attributes",
+		"type": "attributes",
+		parameters.attributes,
+	}
+	obj := {
+		"msg": msg,
+		"entz": entz,
+	}
 }
+
+#   schema:
+#     decision:
+#       oneOf: []
+#       type: object
+#       properties:
+#         entz:
+#           type: rego
+#           value: "obj.entz"
+#         message:
+#           type: rego
+#           value: "obj.message"
+#       required:
+#         - entz
+#         - message
