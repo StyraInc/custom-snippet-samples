@@ -150,11 +150,11 @@ acme_user_has_attributes[obj] {
 	entz := {
 		"snippet": "acme_snippets/acme_user_has_attributes",
 		"type": "attributes",
-		parameters.attributes,
+		parameters.attributes
 	}
 	obj := {
 		"msg": msg,
-		"entz": entz,
+		"entz": entz
 	}
 }
 
