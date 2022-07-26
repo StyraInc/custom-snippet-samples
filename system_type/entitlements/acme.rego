@@ -136,7 +136,6 @@ custom_snippet_3[msg] {
 #     value: "{{library-snippet}}[obj]"
 #   schema:
 #     decision:
-#       oneOf: []
 #       type: object
 #       properties:
 #         entz:
