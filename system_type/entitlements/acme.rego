@@ -1,6 +1,8 @@
 package global.acme_snippets.system_type.entitlements
 
-## jeff ##
+#############################################################################
+# version: v1
+#############################################################################
 
 import data.library.parameters 
 
@@ -161,18 +163,3 @@ acme_user_has_attributes[obj] {
 		"entz": entz,
 	}
 }
-
-#   schema:
-#     decision:
-#       oneOf: []
-#       type: object
-#       properties:
-#         entz:
-#           type: rego
-#           value: "obj.entz"
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - entz
-#         - message
