@@ -38,7 +38,7 @@ object_has_all_attributes(object, attributes) {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-Button-a"
+# title: "ACME: Custom Snippet-Button-Allow-Deny"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -48,14 +48,14 @@ object_has_all_attributes(object, attributes) {
 #     decision:
 #       oneOf:
 #############################################################################
-custom_snippet_button_a[msg] {
-	msg := "ACME: Custom Snippet-Button-a"
+custom_snippet_button_allow_deny[msg] {
+	msg := "ACME: Custom Snippet-Button-Allow-Deny"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-Button-b"
+# title: "ACME: Custom Snippet-Button-Allow"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -67,14 +67,14 @@ custom_snippet_button_a[msg] {
 #         - required:
 #           - allowed
 #############################################################################
-custom_snippet_button_b[msg] {
-	msg := "ACME: Custom Snippet-Button-b"
+custom_snippet_button_allow[msg] {
+	msg := "ACME: Custom Snippet-Button-Allow"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-Button-c"
+# title: "ACME: Custom Snippet-Button-Deny"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -86,14 +86,14 @@ custom_snippet_button_b[msg] {
 #         - required:
 #           - denied
 #############################################################################
-custom_snippet_button_c[msg] {
-	msg := "ACME: Custom Snippet-Button-c"
+custom_snippet_button_Deny[msg] {
+	msg := "ACME: Custom Snippet-Button-Deny"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-Button-d"
+# title: "ACME: Custom Snippet-Button-None"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -106,8 +106,8 @@ custom_snippet_button_c[msg] {
 #     decision:
 #       oneOf: []
 #############################################################################
-custom_snippet_button_d[msg] {
-	msg := "ACME: Custom Snippet-Button-d"
+custom_snippet_button_None[msg] {
+	msg := "ACME: Custom Snippet-Button-None"
 }
 
 #############################################################################
