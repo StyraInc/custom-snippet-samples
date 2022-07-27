@@ -113,7 +113,7 @@ custom_snippet_button_None[msg] {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-Params-a"
+# title: "ACME: Custom Snippet-Params"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -141,14 +141,14 @@ custom_snippet_button_None[msg] {
 #         type: string
 #       uniqueItems: true
 #############################################################################
-custom_snippet_params_a[msg] {
-	msg := sprintf("ACME: Custom Snippet-Params-a subjects(%s)", [data.library.parameters.subjects])
+custom_snippet_params[msg] {
+	msg := sprintf("ACME: Custom Snippet-Params subjects(%s)", [data.library.parameters.subjects])
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-Params-b"
+# title: "ACME: Custom Snippet-Params-with-hints"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -185,8 +185,8 @@ custom_snippet_params_a[msg] {
 #         package: "transform.snippet"
 #         query: "resources"
 #############################################################################
-custom_snippet_params_b[msg] {
-	msg := sprintf("ACME: Custom Snippet-Params-b subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
+custom_snippet_params_with_hints[msg] {
+	msg := sprintf("ACME: Custom Snippet-Params-with-Hints subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
 
 #############################################################################
