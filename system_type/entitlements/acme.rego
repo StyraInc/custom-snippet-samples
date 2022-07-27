@@ -36,6 +36,12 @@ object_has_all_attributes(object, attributes) {
 #   - entz_object_check_actions
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
+# policy:
+#   schema:
+#     decision:
+#       oneOf:
+#         - required:
+#           - allowed
 #############################################################################
 custom_snippet_1[msg] {
 	msg := "ACME: Custom Snippet-1"
@@ -111,7 +117,7 @@ custom_snippet_3[msg] {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: User has attributes"
+# title: "ACME: Custom Snippet-4"
 # diagnostics:
 #   - entz_object_check_users
 #   - subject_exists
@@ -149,8 +155,7 @@ custom_snippet_3[msg] {
 #       required:
 #         - entz
 #         - message
-#############################################################################
-acme_user_has_attributes[obj] {
+custom_snippet_4[obj] {
 	object_has_all_attributes(object_users[input.subject], parameters.attributes)
 	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
 	entz := {
