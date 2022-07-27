@@ -31,7 +31,24 @@ object_has_all_attributes(object, attributes) {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-1"
+# title: "ACME: Custom Snippet-1a"
+# diagnostics:
+#   - entz_object_check_actions
+# description: >-
+#   This custom snippet is the most basic, just returning the "msg" to the requester
+# policy:
+#   schema:
+#     decision:
+#       oneOf:
+#############################################################################
+custom_snippet_1a[msg] {
+	msg := "ACME: Custom Snippet-1a"
+}
+
+#############################################################################
+# METADATA: library-snippet
+# version: v1
+# title: "ACME: Custom Snippet-1b"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -43,8 +60,27 @@ object_has_all_attributes(object, attributes) {
 #         - required:
 #           - allowed
 #############################################################################
-custom_snippet_1[msg] {
-	msg := "ACME: Custom Snippet-1"
+custom_snippet_1b[msg] {
+	msg := "ACME: Custom Snippet-1b"
+}
+
+#############################################################################
+# METADATA: library-snippet
+# version: v1
+# title: "ACME: Custom Snippet-1c"
+# diagnostics:
+#   - entz_object_check_actions
+# description: >-
+#   This custom snippet is the most basic, just returning the "msg" to the requester
+# policy:
+#   schema:
+#     decision:
+#       oneOf:
+#         - required:
+#           - denied
+#############################################################################
+custom_snippet_1c[msg] {
+	msg := "ACME: Custom Snippet-1c"
 }
 
 #############################################################################
