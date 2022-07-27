@@ -86,6 +86,23 @@ custom_snippet_1c[msg] {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
+# title: "ACME: Custom Snippet-1d"
+# diagnostics:
+#   - entz_object_check_actions
+# description: >-
+#   This custom snippet is the most basic, just returning the "msg" to the requester
+# policy:
+#   schema:
+#     decision:
+#       oneOf:
+#############################################################################
+custom_snippet_1d[msg] {
+	msg := "ACME: Custom Snippet-1d"
+}
+
+#############################################################################
+# METADATA: library-snippet
+# version: v1
 # title: "ACME: Custom Snippet-2"
 # diagnostics:
 #   - entz_object_check_actions
