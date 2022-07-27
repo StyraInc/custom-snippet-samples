@@ -106,7 +106,7 @@ custom_snippet_1d[msg] {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-2"
+# title: "ACME: Custom Snippet-2a"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -122,14 +122,14 @@ custom_snippet_1d[msg] {
 #         type: string
 #       uniqueItems: true
 #############################################################################
-custom_snippet_2[msg] {
-	msg := sprintf("ACME: Custom Snippet-2 parameters subjects(%s)", [data.library.parameters.subjects])
+custom_snippet_2a[msg] {
+	msg := sprintf("ACME: Custom Snippet-2a parameters subjects(%s)", [data.library.parameters.subjects])
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-3"
+# title: "ACME: Custom Snippet-2b"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -166,8 +166,8 @@ custom_snippet_2[msg] {
 #         package: "transform.snippet"
 #         query: "resources"
 #############################################################################
-custom_snippet_3[msg] {
-	msg := sprintf("ACME: Custom Snippet-3 parameters subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
+custom_snippet_2b[msg] {
+	msg := sprintf("ACME: Custom Snippet-2b parameters subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
 
 #############################################################################
