@@ -192,7 +192,7 @@ custom_snippet_2b[msg] {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-4"
+# title: "ACME: User has attributes (Copy of ABAC)"
 # diagnostics:
 #   - entz_object_check_users
 #   - subject_exists
@@ -230,7 +230,7 @@ custom_snippet_2b[msg] {
 #       required:
 #         - entz
 #         - message
-custom_snippet_4[obj] {
+acme_user_has_attributes[obj] {
 	object_has_all_attributes(object_users[input.subject], parameters.attributes)
 	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
 	entz := {
