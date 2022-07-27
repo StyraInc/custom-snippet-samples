@@ -2,6 +2,13 @@ package global.acme_snippets.system_type.entitlements
 
 #############################################################################
 # version: v1
+#
+# This rego file contains example custom snippets.  The are intended to be used 
+# as examples when creating your own custom snippets.  Each custom snippet shows
+# a particular capability that can be used.  The majority of these capabilities
+# are defined in the snippets metadata.  Snippets utilize the OPA standard mechanism
+# for annotating rego rules.
+#
 #############################################################################
 
 import data.library.parameters 
