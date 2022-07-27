@@ -11,8 +11,10 @@ package global.acme_snippets.system_type.entitlements
 #
 #############################################################################
 
+# you need to import this library so that ..... @charles
 import data.library.parameters 
 
+# charles could you please explain why we have these next few helper methods
 object_users = data.object.users {
 	true
 } else = {} {
