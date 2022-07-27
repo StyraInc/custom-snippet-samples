@@ -121,6 +121,18 @@ custom_snippet_1d[msg] {
 #       items:
 #         type: string
 #       uniqueItems: true
+#     actions:
+#       type: array
+#       title: "Match Actions"
+#       items:
+#         type: string
+#       uniqueItems: true
+#     resources:
+#       type: array
+#       title: "Resource selector and dropdown"
+#       items:
+#         type: string
+#       uniqueItems: true
 #############################################################################
 custom_snippet_2a[msg] {
 	msg := sprintf("ACME: Custom Snippet-2a parameters subjects(%s)", [data.library.parameters.subjects])
