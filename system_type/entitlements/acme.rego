@@ -38,7 +38,7 @@ object_has_all_attributes(object, attributes) {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-1a"
+# title: "ACME: Custom Snippet-Button-a"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -48,14 +48,14 @@ object_has_all_attributes(object, attributes) {
 #     decision:
 #       oneOf:
 #############################################################################
-custom_snippet_1a[msg] {
-	msg := "ACME: Custom Snippet-1a"
+custom_snippet_button_a[msg] {
+	msg := "ACME: Custom Snippet-Button-a"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-1b"
+# title: "ACME: Custom Snippet-Button-b"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -67,14 +67,14 @@ custom_snippet_1a[msg] {
 #         - required:
 #           - allowed
 #############################################################################
-custom_snippet_1b[msg] {
-	msg := "ACME: Custom Snippet-1b"
+custom_snippet_button_b[msg] {
+	msg := "ACME: Custom Snippet-Button-b"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-1c"
+# title: "ACME: Custom Snippet-Button-c"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -86,14 +86,14 @@ custom_snippet_1b[msg] {
 #         - required:
 #           - denied
 #############################################################################
-custom_snippet_1c[msg] {
-	msg := "ACME: Custom Snippet-1c"
+custom_snippet_button_c[msg] {
+	msg := "ACME: Custom Snippet-Button-c"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "ACME: Custom Snippet-1d"
+# title: "ACME: Custom Snippet-Button-d"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -106,8 +106,8 @@ custom_snippet_1c[msg] {
 #     decision:
 #       oneOf: []
 #############################################################################
-custom_snippet_1d[msg] {
-	msg := "ACME: Custom Snippet-1d"
+custom_snippet_button_d[msg] {
+	msg := "ACME: Custom Snippet-Button-d"
 }
 
 #############################################################################
