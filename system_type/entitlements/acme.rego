@@ -38,7 +38,7 @@ object_has_all_attributes(object, attributes) {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "ACME: Custom Snippet-Button-Allow-Deny"
 # diagnostics:
