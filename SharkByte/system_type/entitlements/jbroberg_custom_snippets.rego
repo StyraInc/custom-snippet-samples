@@ -1,4 +1,4 @@
-package global.custom_snippet_samples.SharkByte.system_type.entitlements
+package global.custom_snippet_samples.jbroberg.system_type.entitlements
 
 #############################################################################
 # version: v1.0
@@ -37,7 +37,7 @@ object_has_all_attributes(object, attributes) {
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "SharkByte: Custom Snippet-Button-Allow-Deny"
+# title: "JBROBERG: Custom Snippet-Button-Allow-Deny"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -48,13 +48,13 @@ object_has_all_attributes(object, attributes) {
 #       oneOf:
 #############################################################################
 custom_snippet_button_allow_deny[msg] {
-	msg := "SharkByte: Custom Snippet-Button-Allow-Deny"
+	msg := "JBROBERG: Custom Snippet-Button-Allow-Deny"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "SharkByte: Custom Snippet-Button-Allow"
+# title: "JBROBERG: Custom Snippet-Button-Allow"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -67,13 +67,13 @@ custom_snippet_button_allow_deny[msg] {
 #           - allowed
 #############################################################################
 custom_snippet_button_allow[msg] {
-	msg := "SharkByte: Custom Snippet-Button-Allow"
+	msg := "JBROBERG: Custom Snippet-Button-Allow"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "SharkByte: Custom Snippet-Button-Deny"
+# title: "JBROBERG: Custom Snippet-Button-Deny"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -86,13 +86,13 @@ custom_snippet_button_allow[msg] {
 #           - denied
 #############################################################################
 custom_snippet_button_Deny[msg] {
-	msg := "SharkByte: Custom Snippet-Button-Deny"
+	msg := "JBROBERG: Custom Snippet-Button-Deny"
 }
 
 #############################################################################
 # METADATA: library-snippet
 # version: v1
-# title: "SharkByte: Custom Snippet-Button-None"
+# title: "JBROBERG: Custom Snippet-Button-None"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -103,5 +103,5 @@ custom_snippet_button_Deny[msg] {
 #       oneOf: []
 #############################################################################
 custom_snippet_button_None[msg] {
-	msg := "SharkByte: Custom Snippet-Button-None"
+	msg := "JBROBERG: Custom Snippet-Button-None"
 }
