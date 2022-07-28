@@ -11,9 +11,6 @@ package global.acme_snippets.system_type.entitlements
 #
 #############################################################################
 
-# you need to import this library so that ..... @charles
-import data.library.parameters 
-
 # charles could you please explain why we have these next few helper methods
 object_users = data.object.users {
 	true
@@ -101,9 +98,6 @@ custom_snippet_button_Deny[msg] {
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 # policy:
-#   rule:
-#     type: rego
-#     value: "obj := {{library-snippet}}"
 #   schema:
 #     decision:
 #       oneOf: []
@@ -233,12 +227,12 @@ custom_snippet_params_with_hints[msg] {
 #         - entz
 #         - message
 acme_user_has_attributes[obj] {
-	object_has_all_attributes(object_users[input.subject], parameters.attributes)
-	msg := sprintf("User %s has attributes %v", [input.subject, parameters.attributes])
+	object_has_all_attributes(object_users[input.subject], data.library.parameters.attributes)
+	msg := sprintf("User %s has attributes %v", [input.subject, data.library.parameters.attributes])
 	entz := {
 		"snippet": "acme_snippets/acme_user_has_attributes",
 		"type": "attributes",
-		"attributes": parameters.attributes,
+		"attributes": data.library.parameters.attributes,
 	}
 	obj := {
 		"message": msg,
