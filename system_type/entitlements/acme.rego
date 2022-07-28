@@ -208,10 +208,10 @@ custom_snippet_params_with_hints[msg] {
 #       type: object
 #       title: Attributes
 #       patternNames:
-#         title: "Key"
+#         title: "Users attribute key"
 #       additionalProperties:
 #         type: string
-#         title: "Value"
+#         title: "Users attribut value"
 #   additionalProperties: false
 #   required:
 #     - attributes
