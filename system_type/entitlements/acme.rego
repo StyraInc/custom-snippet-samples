@@ -160,8 +160,8 @@ custom_snippet_params[msg] {
 #         type: string
 #       uniqueItems: true
 #       "hint:items":
-#         package: "completions"
-#         query: "subjects"
+#         package: "object"
+#         query: "{s | users[s]}"
 #     actions:
 #       type: array
 #       title: "Match Actions"
