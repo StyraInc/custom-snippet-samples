@@ -1,4 +1,4 @@
-package global.jbroberg.system_type.entitlements
+package global.acme_snippets.jbroberg.system_type.entitlements
 
 #############################################################################
 # version: v1.0
