@@ -1,7 +1,7 @@
 package global.acme_snippets.system_type.entitlements
 
 #############################################################################
-# version: v1
+# version: v1.0
 #
 # This rego file contains example custom snippets.  The are intended to be used 
 # as examples when creating your own custom snippets.  Each custom snippet shows
