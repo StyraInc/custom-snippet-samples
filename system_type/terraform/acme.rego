@@ -1,4 +1,4 @@
-package global.acme_snippets.system_type.terraform
+package global.custom_snippet_samples.system_type.terraform
 
 import data.library.parameters
 
