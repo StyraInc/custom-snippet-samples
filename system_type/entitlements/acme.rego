@@ -55,7 +55,7 @@ custom_snippet_button_allow_deny[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "ACME: Custom Snippet-Button-Allow"
 # diagnostics:
@@ -74,7 +74,7 @@ custom_snippet_button_allow[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "ACME: Custom Snippet-Button-Deny"
 # diagnostics:
@@ -93,7 +93,7 @@ custom_snippet_button_Deny[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "ACME: Custom Snippet-Button-None"
 # diagnostics:
@@ -113,7 +113,7 @@ custom_snippet_button_None[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "ACME: Custom Snippet-Params"
 # diagnostics:
@@ -148,7 +148,7 @@ custom_snippet_params[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "ACME: Custom Snippet-Params-with-hints"
 # diagnostics:
@@ -192,7 +192,7 @@ custom_snippet_params_with_hints[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "ACME: User has attributes (Copy of ABAC)"
 # diagnostics:
