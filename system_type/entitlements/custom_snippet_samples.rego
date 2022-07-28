@@ -1,4 +1,4 @@
-package global.acme_snippets.system_type.entitlements
+package global.custom_snippet_samples.system_type.entitlements
 
 #############################################################################
 # version: v1.0
