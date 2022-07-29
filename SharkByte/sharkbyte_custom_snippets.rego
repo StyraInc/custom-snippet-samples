@@ -1,4 +1,4 @@
-package global.custom_snippet_samples.SharkByte.system_type.entitlements
+package global.custom_snippet_samples.SharkByte
 
 #############################################################################
 # version: v1.0
