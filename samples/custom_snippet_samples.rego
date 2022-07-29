@@ -1,4 +1,4 @@
-package global.custom_snippet_samples.system_type.entitlements
+package global.custom_snippet_samples.samples
 
 #############################################################################
 # version: v1.0

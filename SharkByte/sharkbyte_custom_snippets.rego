@@ -35,7 +35,7 @@ object_has_all_attributes(object, attributes) {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "SharkByte: Custom Snippet-Button-Allow-Deny"
 # diagnostics:
@@ -52,7 +52,7 @@ custom_snippet_button_allow_deny[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "SharkByte: Custom Snippet-Button-Allow"
 # diagnostics:
@@ -71,7 +71,7 @@ custom_snippet_button_allow[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "SharkByte: Custom Snippet-Button-Deny"
 # diagnostics:
@@ -90,7 +90,7 @@ custom_snippet_button_Deny[msg] {
 }
 
 #############################################################################
-# METADATA: library-snippet
+# METADATA: library-snippet/entitlements
 # version: v1
 # title: "SharkByte: Custom Snippet-Button-None"
 # diagnostics:
