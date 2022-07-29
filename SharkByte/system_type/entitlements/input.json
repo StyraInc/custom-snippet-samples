@@ -1,0 +1,26 @@
+{
+    "action": "GET",
+    "context": {
+      "channel": "API-MOBILE-BROWSER",
+      "location": "China"
+    },
+    "groups": [
+      "group1",
+      "group2"
+    ],
+    "jwt": "jwt token",
+    "resource": "/cars",
+    "resource-attributes": {
+      "attr1": "value1",
+      "attr2": "value2"
+    },
+    "roles": [
+      "aRole1",
+      "aRole2"
+    ],
+    "subject": "alice",
+    "subject-attributes": {
+      "attr1": "value1",
+      "attr2": "value2"
+    }
+  }
