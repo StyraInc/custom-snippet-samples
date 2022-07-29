@@ -37,7 +37,7 @@ object_has_all_attributes(object, attributes) {
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "ACME: Custom Snippet-Button-Allow-Deny"
+# title: "CUSTOM: Custom Snippet-Button-Allow-Deny"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -48,13 +48,13 @@ object_has_all_attributes(object, attributes) {
 #       oneOf:
 #############################################################################
 custom_snippet_button_allow_deny[msg] {
-	msg := "ACME: Custom Snippet-Button-Allow-Deny"
+	msg := "CUSTOM: Custom Snippet-Button-Allow-Deny"
 }
 
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "ACME: Custom Snippet-Button-Allow"
+# title: "CUSTOM: Custom Snippet-Button-Allow"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -67,13 +67,13 @@ custom_snippet_button_allow_deny[msg] {
 #           - allowed
 #############################################################################
 custom_snippet_button_allow[msg] {
-	msg := "ACME: Custom Snippet-Button-Allow"
+	msg := "CUSTOM: Custom Snippet-Button-Allow"
 }
 
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "ACME: Custom Snippet-Button-Deny"
+# title: "CUSTOM: Custom Snippet-Button-Deny"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -86,13 +86,13 @@ custom_snippet_button_allow[msg] {
 #           - denied
 #############################################################################
 custom_snippet_button_Deny[msg] {
-	msg := "ACME: Custom Snippet-Button-Deny"
+	msg := "CUSTOM: Custom Snippet-Button-Deny"
 }
 
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "ACME: Custom Snippet-Button-None"
+# title: "CUSTOM: Custom Snippet-Button-None"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -103,13 +103,13 @@ custom_snippet_button_Deny[msg] {
 #       oneOf: []
 #############################################################################
 custom_snippet_button_None[msg] {
-	msg := "ACME: Custom Snippet-Button-None"
+	msg := "CUSTOM: Custom Snippet-Button-None"
 }
 
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "ACME: Custom Snippet-Params"
+# title: "CUSTOM: Custom Snippet-Params"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -138,13 +138,13 @@ custom_snippet_button_None[msg] {
 #       uniqueItems: true
 #############################################################################
 custom_snippet_params[msg] {
-	msg := sprintf("ACME: Custom Snippet-Params subjects(%s)", [data.library.parameters.subjects])
+	msg := sprintf("CUSTOM: Custom Snippet-Params subjects(%s)", [data.library.parameters.subjects])
 }
 
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "ACME: Custom Snippet-Params-with-hints"
+# title: "CUSTOM: Custom Snippet-Params-with-hints"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -182,13 +182,13 @@ custom_snippet_params[msg] {
 #         query: "resources"
 #############################################################################
 custom_snippet_params_with_hints[msg] {
-	msg := sprintf("ACME: Custom Snippet-Params-with-Hints subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
+	msg := sprintf("CUSTOM: Custom Snippet-Params-with-Hints subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
 }
 
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "ACME: User has attributes (Copy of ABAC)"
+# title: "CUSTOM: User has attributes (Copy of ABAC)"
 # diagnostics:
 #   - entz_object_check_users
 #   - subject_exists
@@ -226,11 +226,11 @@ custom_snippet_params_with_hints[msg] {
 #       required:
 #         - entz
 #         - message
-acme_user_has_attributes[obj] {
+custom_user_has_attributes[obj] {
 	object_has_all_attributes(object_users[input.subject], data.library.parameters.attributes)
 	msg := sprintf("User %s has attributes %v", [input.subject, data.library.parameters.attributes])
 	entz := {
-		"snippet": "acme_snippets/acme_user_has_attributes",
+		"snippet": "custom_snippets/custom_user_has_attributes",
 		"type": "attributes",
 		"attributes": data.library.parameters.attributes,
 	}
