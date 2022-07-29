@@ -11,7 +11,9 @@ package global.custom_snippet_samples.samples
 #
 #############################################################################
 
-# charles could you please explain why we have these next few helper methods
+# object_users and object_resources are defined in this way to guarantee they
+# will never be undefined, even if data.object.{users,resources} is not
+# defined.
 object_users = data.object.users {
 	true
 } else = {} {
@@ -24,6 +26,9 @@ object_resources = data.object.resources {
 	true
 }
 
+# This checks that every attribute requested is present in the given object,
+# and that it has the same values for all keys in the attributes object. This
+# is essentially equivalent to object.subset() in newer OPA versions.
 object_has_all_attributes(object, attributes) {
 	matches := [match |
 		attr_value := attributes[attr_key]
@@ -38,17 +43,24 @@ object_has_all_attributes(object, attributes) {
 # METADATA: library-snippet/entitlements
 # version: v1
 # title: "CUSTOM: Custom Snippet-Button-Allow-Deny"
-# diagnostics:
-#   - entz_object_check_actions
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 # policy:
+#   rule:
+#     type: rego
+#     value: "{{library-snippet}}[obj]"
 #   schema:
 #     decision:
-#       oneOf:
+#       type: object
+#       properties:
+#         message:
+#           type: rego
+#           value: "obj.message"
+#       required:
+#         - message
 #############################################################################
-custom_snippet_button_allow_deny[msg] {
-	msg := "CUSTOM: Custom Snippet-Button-Allow-Deny"
+custom_snippet_button_allow_deny[obj] {
+	obj := {"message": "CUSTOM: Custom Snippet-Button-Allow-Deny"}
 }
 
 #############################################################################
