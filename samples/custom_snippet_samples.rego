@@ -11,8 +11,6 @@ package global.custom_snippet_samples.samples
 #
 #############################################################################
 
-mycompletion := {"foo", "bar", "baz", "quux", "spam", "ham"}
-
 # object_users and object_resources are defined in this way to guarantee they
 # will never be undefined, even if data.object.{users,resources} is not
 # defined.
@@ -174,8 +172,8 @@ custom_snippet_params[msg] {
 #         type: string
 #       uniqueItems: true
 #       "hint:items":
-#         package: "global.custom_snippet_samples.samples"
-#         query: "mycompletion"
+#         package: "completions"
+#         query: "subjects"
 #     actions:
 #       type: array
 #       title: "Match Actions"
