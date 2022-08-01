@@ -215,6 +215,7 @@ custom_snippet_button_deny[obj] {
 # schema:
 #   type: object
 #   decision:
+#     oneOf: []
 #     type: object
 #     properties:
 #       allowed:
