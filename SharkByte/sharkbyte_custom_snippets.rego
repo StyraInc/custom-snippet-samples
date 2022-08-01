@@ -35,6 +35,23 @@ object_has_all_attributes(object, attributes) {
 }
 
 #############################################################################
+# METADATA: library-snippet/custom
+# version: v1
+# title: "SharkByte: Custom Snippet-Button-Allow-Deny"
+# diagnostics:
+#   - entz_object_check_actions
+# description: >-
+#   This custom snippet is the most basic, just returning the "msg" to the requester
+# policy:
+#   schema:
+#     decision:
+#       oneOf:
+#############################################################################
+custom_snippet_button_allow_deny[msg] {
+	msg := "SharkByte: Custom Snippet-Button-Allow-Deny"
+}
+
+#############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
 # title: "SharkByte: Custom Snippet-Button-Allow-Deny"
