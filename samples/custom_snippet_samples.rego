@@ -215,7 +215,6 @@ custom_snippet_button_deny[obj] {
 # schema:
 #   type: object
 #   decision:
-#     oneOf: []
 #     type: object
 #     properties:
 #       allowed:
@@ -245,6 +244,7 @@ custom_snippet_button_deny[obj] {
 #     value: "{{library-snippet}}[obj]"
 #   schema:
 #     decision:
+#       oneOf: []
 #       type: object
 #       properties:
 #         message:
