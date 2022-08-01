@@ -274,6 +274,11 @@ custom_snippet_button_none[obj] {
 #         type: string
 #       uniqueItems: true
 #   decision:
+#     oneOf:
+#       - required:
+#         - allowed
+#       - required:
+#         - denied
 #     type: object
 #     properties:
 #       allowed:
@@ -354,9 +359,51 @@ custom_snippet_params[obj] {
 #       "hint:items":
 #         package: "transform.snippet"
 #         query: "resources"
+#   decision:
+#     oneOf:
+#       - required:
+#         - allowed
+#       - required:
+#         - denied
+#     type: object
+#     properties:
+#       allowed:
+#         const: true
+#         description: "If true, allows the request."
+#         title: "Allow"
+#         type: "boolean"
+#       denied:
+#         const: true
+#         description: "If true, denies the request."
+#         title: "Deny"
+#         type: "boolean"
+#       entz:
+#         description: "Add elements to the entz set"
+#         parameter: false
+#         title: "Entitlements"
+#         type: "array"
+#         uniqueItems: true
+#       message:
+#         type: string
+#         parameter: false
+#     required:
+#       - attributes
+# policy:
+#   rule:
+#     type: rego
+#     value: "{{library-snippet}}[obj]"
+#   schema:
+#     decision:
+#       type: object
+#       properties:
+#         message:
+#           type: rego
+#           value: "obj.message"
+#       required:
+#         - message
 #############################################################################
-custom_snippet_params_with_hints[msg] {
-	msg := sprintf("CUSTOM: Custom Snippet-Params-with-Hints subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])
+custom_snippet_params_with_hints[obj] {
+	obj := {"message": sprintf("CUSTOM: Custom Snippet-Params-with-Hints subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])}
 }
 
 #############################################################################
@@ -383,6 +430,48 @@ custom_snippet_params_with_hints[msg] {
 #   additionalProperties: false
 #   required:
 #     - attributes
+#   decision:
+#     oneOf:
+#       - required:
+#         - allowed
+#       - required:
+#         - denied
+#     type: object
+#     properties:
+#       allowed:
+#         const: true
+#         description: "If true, allows the request."
+#         title: "Allow"
+#         type: "boolean"
+#       denied:
+#         const: true
+#         description: "If true, denies the request."
+#         title: "Deny"
+#         type: "boolean"
+#       entz:
+#         description: "Add elements to the entz set"
+#         parameter: false
+#         title: "Entitlements"
+#         type: "array"
+#         uniqueItems: true
+#       message:
+#         type: string
+#         parameter: false
+#     required:
+#       - attributes
+# policy:
+#   rule:
+#     type: rego
+#     value: "{{library-snippet}}[obj]"
+#   schema:
+#     decision:
+#       type: object
+#       properties:
+#         message:
+#           type: rego
+#           value: "obj.message"
+#       required:
+#         - message
 # policy:
 #   rule:
 #     type: rego
