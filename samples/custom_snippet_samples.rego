@@ -215,7 +215,6 @@ custom_snippet_button_deny[obj] {
 # schema:
 #   type: object
 #   decision:
-#     oneOf:
 #     type: object
 #     properties:
 #       allowed:
@@ -275,7 +274,6 @@ custom_snippet_button_none[obj] {
 #         type: string
 #       uniqueItems: true
 #   decision:
-#     oneOf:
 #     type: object
 #     properties:
 #       allowed:
