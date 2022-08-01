@@ -45,6 +45,37 @@ object_has_all_attributes(object, attributes) {
 # title: "CUSTOM: Custom Snippet-Button-Allow-Deny"
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
+# schema:
+#   type: object
+#   decision:
+#     oneOf:
+#       - required:
+#         - allowed
+#       - required:
+#         - denied
+#     type: object
+#     properties:
+#       allowed:
+#         const: true
+#         description: "If true, allows the request."
+#         title: "Allow"
+#         type: "boolean"
+#       denied:
+#         const: true
+#         description: "If true, denies the request."
+#         title: "Deny"
+#         type: "boolean"
+#       entz:
+#         description: "Add elements to the entz set"
+#         parameter: false
+#         title: "Entitlements"
+#         type: "array"
+#         uniqueItems: true
+#       message:
+#         type: string
+#         parameter: false
+#     required:
+#       - attributes
 # policy:
 #   rule:
 #     type: rego
