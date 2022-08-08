@@ -329,7 +329,7 @@ custom_snippet_params[obj] {
 #############################################################################
 # METADATA: library-snippet/entitlements
 # version: v1
-# title: "CUSTOM: Custom Snippet-Params-with-hints"
+# title: "CUSTOM: Custom Snippet-Params-with-hints-ordered"
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
@@ -337,6 +337,10 @@ custom_snippet_params[obj] {
 #   For each one of these parameters, it provides hints as to what the values are that the user should select from
 # schema:
 #   type: object
+#   hint:order:
+#     - subjects
+#     - actions
+#     - resources
 #   properties:
 #     subjects:
 #       type: array
