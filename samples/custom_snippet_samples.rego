@@ -3,7 +3,7 @@ package global.custom_snippet_samples.samples
 #############################################################################
 # version: v1.0
 #
-# This rego file contains example custom snippets.  The are intended to be used 
+# This rego file contains example custom snippets.  The are intended to be used
 # as examples when creating your own custom snippets.  Each custom snippet shows
 # a particular capability that can be used.  The majority of these capabilities
 # are defined in the snippets metadata.  Snippets utilize the OPA standard mechanism
@@ -269,16 +269,13 @@ custom_snippet_button_none[obj] {
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
-#   This custom snippet asks the user to enter one parameter, the subjects (aka users).  
+#   This custom snippet asks the user to enter one parameter, the subjects (aka users).
 #   It does not provide any guidance for those values.
 # schema:
-#   type: object
-#   properties:
-#     subjects:
-#       type: array
-#       items:
-#         type: string
-#       uniqueItems: true
+#   parameters:
+#     - name: subjects
+#       type: set_of_strings
+#       required: false
 #   decision:
 #     oneOf:
 #       - required:
@@ -336,37 +333,26 @@ custom_snippet_params[obj] {
 #   This custom snippet asks the users for 3 different parameters, subjects, actions, resources.
 #   For each one of these parameters, it provides hints as to what the values are that the user should select from
 # schema:
-#   type: object
-#   hint:order:
-#     - subjects
-#     - actions
-#     - resources
-#   properties:
-#     subjects:
-#       type: array
-#       title: "Match subjects"
+#   parameters:
+#     - name: subjects
+#       type: set_of_strings_multi_select
+#       placeholder: "Match subjects"
+#       required: false
 #       items:
-#         type: string
-#       uniqueItems: true
-#       "hint:items":
 #         package: "completions"
 #         query: "subjects"
-#     actions:
-#       type: array
-#       title: "Match Actions"
+#     - name: actions
+#       type: set_of_strings_multi_select
+#       placeholder: "Match actions"
+#       required: false
 #       items:
-#         type: string
-#       uniqueItems: true
-#       "hint:items":
 #         package: "object"
 #         query: "actions"
-#     resources:
-#       type: array
-#       title: "Resource selector and dropdown"
-#       items:
-#         type: string
-#       uniqueItems: true
-#       "hint:items":
+#     - name: resources
+#       type: set_of_strings_multi_select
+#       placeholder: "Resource selector and dropdown"
+#       required: false
+#       "items":
 #         package: "transform.snippet"
 #         query: "resources"
 #   decision:
@@ -428,18 +414,13 @@ custom_snippet_params_with_hints[obj] {
 #   Matches requests where the user making a request has all of the selected attributes.
 # schema:
 #   type: object
-#   properties:
-#     attributes:
-#       type: object
-#       title: Attributes
-#       patternNames:
-#         title: "Users attribute key"
-#       additionalProperties:
-#         type: string
-#         title: "Users attribut value"
-#   additionalProperties: false
-#   required:
-#     - attributes
+#   parameters:
+#     - name: attributes
+#       type: name_set_of_strings
+#       description: attribute
+#       placeholders:
+#         key: "Users attribute key"
+#         value: "Users attribute value"
 #   decision:
 #     oneOf:
 #       - required:
