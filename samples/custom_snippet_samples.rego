@@ -3,7 +3,7 @@ package global.custom_snippet_samples.samples
 #############################################################################
 # version: v1.0
 #
-# This rego file contains example custom snippets.  The are intended to be used 
+# This rego file contains example custom snippets.  The are intended to be used
 # as examples when creating your own custom snippets.  Each custom snippet shows
 # a particular capability that can be used.  The majority of these capabilities
 # are defined in the snippets metadata.  Snippets utilize the OPA standard mechanism
@@ -45,50 +45,27 @@ object_has_all_attributes(object, attributes) {
 # title: "CUSTOM: Custom Snippet-Button-Allow-Deny"
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
-# schema:
-#   type: object
-#   decision:
-#     oneOf:
-#       - required:
-#         - allowed
-#       - required:
-#         - denied
-#     type: object
-#     properties:
-#       allowed:
-#         const: true
-#         description: "If true, allows the request."
-#         title: "Allow"
-#         type: "boolean"
-#       denied:
-#         const: true
-#         description: "If true, denies the request."
-#         title: "Deny"
-#         type: "boolean"
-#       entz:
-#         description: "Add elements to the entz set"
-#         parameter: false
-#         title: "Entitlements"
-#         type: "array"
-#         uniqueItems: true
-#       message:
-#         type: string
-#         parameter: false
-#     required:
-#       - attributes
 # policy:
 #   rule:
 #     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       type: object
-#       properties:
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - message
+#     value: "{{this}}[obj]"
+# schema:
+#   decision:
+#     - type: toggle
+#       label: Permission
+#       toggles:
+#       - key: allowed
+#         value: true
+#         label: Allow
+#       - key: denied
+#         value: true
+#         label: Deny
+#     - type: rego
+#       key: entz
+#       value: "set()"
+#     - type: rego
+#       key: message
+#       value: "obj.message"
 #############################################################################
 custom_snippet_button_allow_deny[obj] {
 	obj := {"message": "CUSTOM: Custom Snippet-Button-Allow-Deny"}
@@ -102,48 +79,24 @@ custom_snippet_button_allow_deny[obj] {
 #   - entz_object_check_actions
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
-# schema:
-#   type: object
-#   decision:
-#     oneOf:
-#       - required:
-#         - allowed
-#     type: object
-#     properties:
-#       allowed:
-#         const: true
-#         description: "If true, allows the request."
-#         title: "Allow"
-#         type: "boolean"
-#       denied:
-#         const: true
-#         description: "If true, denies the request."
-#         title: "Deny"
-#         type: "boolean"
-#       entz:
-#         description: "Add elements to the entz set"
-#         parameter: false
-#         title: "Entitlements"
-#         type: "array"
-#         uniqueItems: true
-#       message:
-#         type: string
-#         parameter: false
-#     required:
-#       - attributes
 # policy:
 #   rule:
 #     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       type: object
-#       properties:
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - message
+#     value: "{{this}}[obj]"
+# schema:
+#   decision:
+#     - type: toggle
+#       label: Permission
+#       toggles:
+#       - key: allowed
+#         value: true
+#         label: Allow
+#     - type: rego
+#       key: entz
+#       value: "set()"
+#     - type: rego
+#       key: message
+#       value: "obj.message"
 #############################################################################
 custom_snippet_button_allow[obj] {
 	obj := {"message": "CUSTOM: Custom Snippet-Button-Allow"}
@@ -157,48 +110,24 @@ custom_snippet_button_allow[obj] {
 #   - entz_object_check_actions
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
-# schema:
-#   type: object
-#   decision:
-#     oneOf:
-#       - required:
-#         - denied
-#     type: object
-#     properties:
-#       allowed:
-#         const: true
-#         description: "If true, allows the request."
-#         title: "Allow"
-#         type: "boolean"
-#       denied:
-#         const: true
-#         description: "If true, denies the request."
-#         title: "Deny"
-#         type: "boolean"
-#       entz:
-#         description: "Add elements to the entz set"
-#         parameter: false
-#         title: "Entitlements"
-#         type: "array"
-#         uniqueItems: true
-#       message:
-#         type: string
-#         parameter: false
-#     required:
-#       - attributes
 # policy:
 #   rule:
 #     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       type: object
-#       properties:
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - message
+#     value: "{{this}}[obj]"
+# schema:
+#   decision:
+#     - type: toggle
+#       label: Permission
+#       toggles:
+#       - key: denied
+#         value: true
+#         label: Deny
+#     - type: rego
+#       key: entz
+#       value: "set()"
+#     - type: rego
+#       key: message
+#       value: "obj.message"
 #############################################################################
 custom_snippet_button_deny[obj] {
 	obj := {"message": "CUSTOM: Custom Snippet-Button-Deny"}
@@ -212,51 +141,18 @@ custom_snippet_button_deny[obj] {
 #   - entz_object_check_actions
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
-# schema:
-#   type: object
-#   decision:
-#     oneOf:
-#       - required:
-#         - allowed
-#       - required:
-#         - denied
-#     type: object
-#     properties:
-#       allowed:
-#         const: true
-#         description: "If true, allows the request."
-#         title: "Allow"
-#         type: "boolean"
-#       denied:
-#         const: true
-#         description: "If true, denies the request."
-#         title: "Deny"
-#         type: "boolean"
-#       entz:
-#         description: "Add elements to the entz set"
-#         parameter: false
-#         title: "Entitlements"
-#         type: "array"
-#         uniqueItems: true
-#       message:
-#         type: string
-#         parameter: false
-#     required:
-#       - attributes
 # policy:
 #   rule:
 #     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       oneOf: []
-#       type: object
-#       properties:
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - message
+#     value: "{{this}}[obj]"
+# schema:
+#   decision:
+#     - type: rego
+#       key: entz
+#       value: "set()"
+#     - type: rego
+#       key: message
+#       value: "obj.message"
 #############################################################################
 custom_snippet_button_none[obj] {
 	obj := {"message": "CUSTOM: Custom Snippet-Button-None"}
@@ -269,58 +165,33 @@ custom_snippet_button_none[obj] {
 # diagnostics:
 #   - entz_object_check_actions
 # description: >-
-#   This custom snippet asks the user to enter one parameter, the subjects (aka users).  
+#   This custom snippet asks the user to enter one parameter, the subjects (aka users).
 #   It does not provide any guidance for those values.
-# schema:
-#   type: object
-#   properties:
-#     subjects:
-#       type: array
-#       items:
-#         type: string
-#       uniqueItems: true
-#   decision:
-#     oneOf:
-#       - required:
-#         - allowed
-#       - required:
-#         - denied
-#     type: object
-#     properties:
-#       allowed:
-#         const: true
-#         description: "If true, allows the request."
-#         title: "Allow"
-#         type: "boolean"
-#       denied:
-#         const: true
-#         description: "If true, denies the request."
-#         title: "Deny"
-#         type: "boolean"
-#       entz:
-#         description: "Add elements to the entz set"
-#         parameter: false
-#         title: "Entitlements"
-#         type: "array"
-#         uniqueItems: true
-#       message:
-#         type: string
-#         parameter: false
-#     required:
-#       - attributes
 # policy:
 #   rule:
 #     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       type: object
-#       properties:
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - message
+#     value: "{{this}}[obj]"
+# schema:
+#   parameters:
+#     - name: subjects
+#       type: set_of_strings
+#       required: false
+#   decision:
+#     - type: toggle
+#       label: Permission
+#       toggles:
+#       - key: allowed
+#         value: true
+#         label: Allow
+#       - key: denied
+#         value: true
+#         label: Deny
+#     - type: rego
+#       key: entz
+#       value: "set()"
+#     - type: rego
+#       key: message
+#       value: "obj.message"
 #############################################################################
 custom_snippet_params[obj] {
 	obj := {"message": sprintf("CUSTOM: Custom Snippet-Params subjects(%s)", [data.library.parameters.subjects])}
@@ -335,82 +206,49 @@ custom_snippet_params[obj] {
 # description: >-
 #   This custom snippet asks the users for 3 different parameters, subjects, actions, resources.
 #   For each one of these parameters, it provides hints as to what the values are that the user should select from
-# schema:
-#   type: object
-#   hint:order:
-#     - subjects
-#     - actions
-#     - resources
-#   properties:
-#     subjects:
-#       type: array
-#       title: "Match subjects"
-#       items:
-#         type: string
-#       uniqueItems: true
-#       "hint:items":
-#         package: "completions"
-#         query: "subjects"
-#     actions:
-#       type: array
-#       title: "Match Actions"
-#       items:
-#         type: string
-#       uniqueItems: true
-#       "hint:items":
-#         package: "object"
-#         query: "actions"
-#     resources:
-#       type: array
-#       title: "Resource selector and dropdown"
-#       items:
-#         type: string
-#       uniqueItems: true
-#       "hint:items":
-#         package: "transform.snippet"
-#         query: "resources"
-#   decision:
-#     oneOf:
-#       - required:
-#         - allowed
-#       - required:
-#         - denied
-#     type: object
-#     properties:
-#       allowed:
-#         const: true
-#         description: "If true, allows the request."
-#         title: "Allow"
-#         type: "boolean"
-#       denied:
-#         const: true
-#         description: "If true, denies the request."
-#         title: "Deny"
-#         type: "boolean"
-#       entz:
-#         description: "Add elements to the entz set"
-#         parameter: false
-#         title: "Entitlements"
-#         type: "array"
-#         uniqueItems: true
-#       message:
-#         type: string
-#         parameter: false
-#     required:
-#       - attributes
 # policy:
 #   rule:
 #     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       type: object
-#       properties:
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - message
+#     value: "{{this}}[obj]"
+# schema:
+#   parameters:
+#     - name: subjects
+#       type: set_of_strings_multi_select
+#       placeholder: "Match subjects"
+#       required: false
+#       items:
+#         package: "completions"
+#         query: "subjects"
+#     - name: actions
+#       type: set_of_strings_multi_select
+#       placeholder: "Match actions"
+#       required: false
+#       items:
+#         package: "object"
+#         query: "actions"
+#     - name: resources
+#       type: set_of_strings_multi_select
+#       placeholder: "Resource selector and dropdown"
+#       required: false
+#       "items":
+#         package: "transform.snippet"
+#         query: "resources"
+#   decision:
+#     - type: toggle
+#       label: Permission
+#       toggles:
+#       - key: allowed
+#         value: true
+#         label: Allow
+#       - key: denied
+#         value: true
+#         label: Deny
+#     - type: rego
+#       key: entz
+#       value: "set()"
+#     - type: rego
+#       key: message
+#       value: "obj.message"
 #############################################################################
 custom_snippet_params_with_hints[obj] {
 	obj := {"message": sprintf("CUSTOM: Custom Snippet-Params-with-Hints subjects(%s), actions(%s), resources(%s)", [data.library.parameters.subjects, data.library.parameters.actions, data.library.parameters.resources])}
@@ -426,79 +264,35 @@ custom_snippet_params_with_hints[obj] {
 #   - subject_has_attributes
 # description: >-
 #   Matches requests where the user making a request has all of the selected attributes.
+# policy:
+#   rule:
+#     type: rego
+#     value: "{{this}}[obj]"
 # schema:
 #   type: object
-#   properties:
-#     attributes:
-#       type: object
-#       title: Attributes
-#       patternNames:
-#         title: "Users attribute key"
-#       additionalProperties:
-#         type: string
-#         title: "Users attribut value"
-#   additionalProperties: false
-#   required:
-#     - attributes
+#   parameters:
+#     - name: attributes
+#       type: name_set_of_strings
+#       description: attribute
+#       placeholders:
+#         key: "Users attribute key"
+#         value: "Users attribute value"
 #   decision:
-#     oneOf:
-#       - required:
-#         - allowed
-#       - required:
-#         - denied
-#     type: object
-#     properties:
-#       allowed:
-#         const: true
-#         description: "If true, allows the request."
-#         title: "Allow"
-#         type: "boolean"
-#       denied:
-#         const: true
-#         description: "If true, denies the request."
-#         title: "Deny"
-#         type: "boolean"
-#       entz:
-#         description: "Add elements to the entz set"
-#         parameter: false
-#         title: "Entitlements"
-#         type: "array"
-#         uniqueItems: true
-#       message:
-#         type: string
-#         parameter: false
-#     required:
-#       - attributes
-# policy:
-#   rule:
-#     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       type: object
-#       properties:
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - message
-# policy:
-#   rule:
-#     type: rego
-#     value: "{{library-snippet}}[obj]"
-#   schema:
-#     decision:
-#       type: object
-#       properties:
-#         entz:
-#           type: rego
-#           value: "obj.entz"
-#         message:
-#           type: rego
-#           value: "obj.message"
-#       required:
-#         - entz
-#         - message
+#     - type: toggle
+#       label: Permission
+#       toggles:
+#       - key: allowed
+#         value: true
+#         label: Allow
+#       - key: denied
+#         value: true
+#         label: Deny
+#     - type: rego
+#       key: entz
+#       value: "set()"
+#     - type: rego
+#       key: message
+#       value: "obj.message"
 custom_user_has_attributes[obj] {
 	object_has_all_attributes(object_users[input.subject], data.library.parameters.attributes)
 	msg := sprintf("User %s has attributes %v", [input.subject, data.library.parameters.attributes])
