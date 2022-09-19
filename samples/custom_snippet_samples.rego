@@ -213,21 +213,21 @@ custom_snippet_params[obj] {
 # schema:
 #   parameters:
 #     - name: subjects
-#       type: string
+#       type: set_of_strings
 #       placeholder: "Match subjects"
 #       required: false
 #       items:
 #         package: "completions"
 #         query: "subjects"
 #     - name: actions
-#       type: string
+#       type: set_of_strings
 #       placeholder: "Match actions"
 #       required: false
 #       items:
 #         package: "object"
 #         query: "actions"
 #     - name: resources
-#       type: string
+#       type: set_of_strings
 #       placeholder: "Resource selector and dropdown"
 #       required: false
 #       "items":
