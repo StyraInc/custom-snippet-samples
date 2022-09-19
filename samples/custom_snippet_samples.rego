@@ -213,21 +213,21 @@ custom_snippet_params[obj] {
 # schema:
 #   parameters:
 #     - name: subjects
-#       type: set_of_strings_multi_select
+#       type: string
 #       placeholder: "Match subjects"
 #       required: false
 #       items:
 #         package: "completions"
 #         query: "subjects"
 #     - name: actions
-#       type: set_of_strings_multi_select
+#       type: string
 #       placeholder: "Match actions"
 #       required: false
 #       items:
 #         package: "object"
 #         query: "actions"
 #     - name: resources
-#       type: set_of_strings_multi_select
+#       type: string
 #       placeholder: "Resource selector and dropdown"
 #       required: false
 #       "items":
@@ -269,14 +269,15 @@ custom_snippet_params_with_hints[obj] {
 #     type: rego
 #     value: "{{this}}[obj]"
 # schema:
-#   type: object
 #   parameters:
 #     - name: attributes
-#       type: name_set_of_strings
+#       type: object
 #       description: attribute
-#       placeholders:
-#         key: "Users attribute key"
-#         value: "Users attribute value"
+#       key:
+#         placeholder: "Users attribute key"
+#       value:
+#         type: set_of_strings
+#         placeholder: "Users attribute value"
 #   decision:
 #     - type: toggle
 #       label: Permission
