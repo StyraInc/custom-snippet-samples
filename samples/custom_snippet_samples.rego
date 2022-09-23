@@ -46,7 +46,7 @@ object_has_all_attributes(object, attributes) {
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 # filePath:
-# - policy
+# - systems/.*/policy/.*
 # policy:
 #   rule:
 #     type: rego
@@ -82,7 +82,7 @@ custom_snippet_button_allow_deny[obj] {
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 # filePath:
-# - policy
+# - systems/.*/policy/.*
 # policy:
 #   rule:
 #     type: rego
@@ -115,7 +115,7 @@ custom_snippet_button_allow[obj] {
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 # filePath:
-# - policy
+# - systems/.*/policy/.*
 # policy:
 #   rule:
 #     type: rego
@@ -148,7 +148,7 @@ custom_snippet_button_deny[obj] {
 # description: >-
 #   This custom snippet is the most basic, just returning the "msg" to the requester
 # filePath:
-# - policy
+# - systems/.*/policy/.*
 # policy:
 #   rule:
 #     type: rego
@@ -176,7 +176,7 @@ custom_snippet_button_none[obj] {
 #   This custom snippet asks the user to enter one parameter, the subjects (aka users).
 #   It does not provide any guidance for those values.
 # filePath:
-# - policy
+# - systems/.*/policy/.*
 # policy:
 #   rule:
 #     type: rego
@@ -217,7 +217,7 @@ custom_snippet_params[obj] {
 #   This custom snippet asks the users for 3 different parameters, subjects, actions, resources.
 #   For each one of these parameters, it provides hints as to what the values are that the user should select from
 # filePath:
-# - policy
+# - systems/.*/policy/.*
 # policy:
 #   rule:
 #     type: rego
@@ -277,7 +277,7 @@ custom_snippet_params_with_hints[obj] {
 # description: >-
 #   Matches requests where the user making a request has all of the selected attributes.
 # filePath:
-# - policy
+# - systems/.*/policy/.*
 # policy:
 #   rule:
 #     type: rego
