@@ -1,5 +1,9 @@
 package global.custom_snippet_samples.samples
 
+# Copyright 2022 Styra Inc. All rights reserved.
+# Use of this source code is governed by an Apache2
+# license that can be found in the LICENSE file.
+
 #############################################################################
 # version: v1.0
 #
