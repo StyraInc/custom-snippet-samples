@@ -1,7 +1,8 @@
 # Custom Snippet Samples
 
-This repository contains examples of the [Custom Snippets](TODO: link to Custom
-Snippets doc here) feature of [Styra DAS](https://www.styra.com/styra-das/).
+This repository contains examples of the [Custom
+Snippets](https://docs.styra.com/policies/policy-authoring/custom-snippets/)
+feature of [Styra DAS](https://www.styra.com/styra-das/).
 
 The sample custom snippets can be found in the file
 [`./samples/custom_snippet_samples.rego`](./samples/custom_snippet_samples.rego).
