@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 
-// Copyright 2022 Styra Inc. All rights reserved.
-// Use of this source code is governed by an Apache2
-// license that can be found in the LICENSE file.
-
-// See: ./validator/README.md for usage
+// See: ./README.md for usage
 
 require = require('esm-wallaby')(module)
 
@@ -34,6 +30,28 @@ function isPlainObject(input) {
   return input && !Array.isArray(input) && typeof input === 'object'
 }
 
+function isCorrectType(input, type) {
+  if (type === 'array') {
+    return Array.isArray(input)
+  }
+
+  if (type === 'object') {
+    return isPlainObject(input)
+  }
+
+  return typeof input === type
+}
+
+function checkParameterType(parameter, expectedType, path, optional) {
+  if (optional && !parameter) {
+    return
+  }
+
+  if (!isCorrectType(parameter, expectedType)) {
+    throw new SchemaError(`${path.join('.')} must be of the type: ${expectedType}`)
+  }
+}
+
 const ParameterTypes = {
   NUMBER: 'number',
   OBJECT: 'object',
@@ -44,106 +62,78 @@ const ParameterTypes = {
 
 const parameterTypes = [ParameterTypes.STRING, ParameterTypes.SET_OF_STRINGS, ParameterTypes.NUMBER, ParameterTypes.SET_OF_NUMBERS, ParameterTypes.OBJECT]
 function checkParameters(parameters) {
-  if (!Array.isArray(parameters)) {
-    throw new SchemaError('parameters must be an array')
-  }
+  const path = ['schema', 'parameters']
+
+  checkParameterType(parameters, 'array', path)
 
   for (let i = 0; i < parameters.length; i++) {
+    path.push(i)
     const parameter = parameters[i]
 
-    if (!isPlainObject(parameter)) {
-      throw new SchemaError(`each parameter in parameters should be an object`)
-    }
+    checkParameterType(parameter, 'object', path)
 
     if (!parameterTypes.includes(parameter.type)) {
-      throw new SchemaError(`Unknown parameter's type in parameters ${parameter.type}`)
+      throw new SchemaError(`${path.join('.')}.type is not a valid type`)
     }
 
-    if (typeof parameter.name !== 'string') {
-      throw new SchemaError(`parameter's name in parameters should be a string`)
-    }
-
-    if (parameter.label && typeof parameter.label !== 'string') {
-      throw new SchemaError(`parameter's label in parameters should be a string`)
-    }
-
-    if (parameter.required && typeof parameter.required !== 'boolean') {
-      throw new SchemaError(`parameter's required in parameters should be a string`)
-    }
-
-    if (parameter.placeholder && typeof parameter.placeholder !== 'string') {
-      throw new SchemaError(`parameter string's placeholder in parameters should be a string`)
-    }
+    checkParameterType(parameter, 'object', path)
+    checkParameterType(parameter.name, 'string', [...path, 'name'])
+    checkParameterType(parameter.label, 'string', [...path, 'label'], true)
+    checkParameterType(parameter.required, 'boolean', [...path, 'required'], true)
+    checkParameterType(parameter.placeholder, 'string', [...path, 'placeholder'], true)
 
     if (parameter.type === ParameterTypes.STRING) {
-      if (parameter.default && typeof parameter.default !== 'string') {
-        throw new SchemaError(`parameter string's default in parameters should be a string`)
-      }
+      checkParameterType(parameter.default, 'string', [...path, 'default'], true)
 
       const items = parameter.items
+      path.push('items')
       if (items && !(Array.isArray(items) || isPlainObject(items))) {
-        throw new SchemaError(`parameter string's items in parameters should be an array or object`)
+        throw new SchemaError(`${path.join('.')} should be an array or object`)
       }
 
       if (Array.isArray(items)) {
         for (let i = 0; i < items.length; i++) {
-          const item = items[i]
-
-          if (typeof item !== 'string') {
-            throw new SchemaError(`parameter string's items array in parameters should be strings`)
-          }
+          path.push(i)
+          checkParameterType(items[i], 'string', path)
+          path.pop()
         }
       }
 
       if (isPlainObject(items)) {
         const query = items.query
-        if (typeof query !== 'string') {
-          throw new SchemaError(`parameter string's items object's query in parameters should be a string`)
+
+        checkParameterType(items.query, 'string', [...path, 'query'])
+
+        if ((!!items.datasource + !!items.library + !!items.package) !== 1) {
+          throw new SchemaError(`${path} datasource, library and package are mutually exclusive`)
         }
 
-        const datasource = items.datasource
-        const library = items.library
-        const package = items.package
-
-        if ((!!datasource + !!library + !!package) !== 1) {
-          throw new SchemaError(`datasource, library and package are mutually exclusive`)
-        }
-
-        if (datasource && typeof datasource !== 'string') {
-          throw new SchemaError(`datasource should be a string`)
-        }
-
-        if (library && typeof library !== 'string') {
-          throw new SchemaError(`library should be a string`)
-        }
-
-        if (package && typeof package !== 'string') {
-          throw new SchemaError(`package should be a string`)
-        }
+        checkParameterType(items.datasource, 'string', [...path, 'datasource'], true)
+        checkParameterType(items.library, 'string', [...path, 'library'], true)
+        checkParameterType(items.package, 'string', [...path, 'package'], true)
       }
+
+      path.pop()
     }
 
     if (parameter.type === ParameterTypes.SET_OF_STRINGS) {
-      if (parameter.default && !Array.isArray(parameter.default)) {
-        throw new SchemaError(`parameter set_of_strings's default in parameters should be an array`)
-      } else if (parameter.default) {
-        if (!parameter.default.every((v) => typeof v === 'string')) {
-          throw new SchemaError(`parameter set_of_strings's default array in parameters should have string values`)
-        }
+      checkParameterType(parameter.default, 'array', [...path, 'default'], true)
+
+      if (parameter.default && !parameter.default.every((v) => typeof v === 'string')) {
+        throw new SchemaError(`${path.join('.')} should have string values`)
       }
 
+      path.push('items')
       const items = parameter.items
       if (items && !(Array.isArray(items) || isPlainObject(items))) {
-        throw new SchemaError(`parameter set_of_strings's items in parameters should be an array or object`)
+        throw new SchemaError(`${path.join('.')}.items should be an array or object`)
       }
 
       if (Array.isArray(items)) {
         for (let i = 0; i < items.length; i++) {
-          const item = items[i]
-
-          if (typeof item !== 'string') {
-            throw new SchemaError(`parameter set_of_strings's items array in parameters should be strings`)
-          }
+          path.push(i)
+          checkParameterType(items[i], 'string', path)
+          path.pop()
         }
       }
 
@@ -153,179 +143,151 @@ function checkParameters(parameters) {
           throw new SchemaError(`parameter set_of_strings's items object's query in parameters should be a string`)
         }
 
-        const datasource = items.datasource
-        const library = items.library
-        const package = items.package
-
-        if ((!!datasource + !!library + !!package) !== 1) {
-          throw new SchemaError(`datasource, library and package are mutually exclusive`)
+        if ((!!items.datasource + !!items.library + !!items.package) !== 1) {
+          throw new SchemaError(`${path.join('.')} datasource, library and package are mutually exclusive`)
         }
 
-        if (datasource && typeof datasource !== 'string') {
-          throw new SchemaError(`datasource should be a string`)
-        }
-
-        if (library && typeof library !== 'string') {
-          throw new SchemaError(`library should be a string`)
-        }
-
-        if (package && typeof package !== 'string') {
-          throw new SchemaError(`package should be a string`)
-        }
+        checkParameterType(items.datasource, 'string', [...path, 'datasource'], true)
+        checkParameterType(items.library, 'string', [...path, 'library'], true)
+        checkParameterType(items.package, 'string', [...path, 'package'], true)
       }
+      path.pop()
     }
 
     if (parameter.type === ParameterTypes.NUMBER) {
-      if (parameter.default && typeof parameter.default !== 'number') {
-        throw new SchemaError(`parameter number's default in parameters should be a number`)
-      }
+      checkParameterType(parameter.default, 'number', [...path, 'default'], true)
     }
 
     if (parameter.type === ParameterTypes.OBJECT) {
-      if (parameter.default && !isPlainObject(parameter.default)) {
-        throw new SchemaError(`parameter object's default in parameters should be a object`)
+      checkParameterType(parameter.default, 'object', [...path, 'default'], true)
+      checkParameterType(parameter.key, 'object', [...path, 'key'], true)
+
+      if (parameter.key) {
+        checkParameterType(parameter.key.placeholder, 'string', [...path, 'key', 'placeholder'])
       }
 
-      if (parameter.key && !isPlainObject(parameter.key)) {
-        throw new SchemaError(`parameter object's key in parameters should be a object`)
-      } else if (parameter.key) {
-        if (typeof parameter.key.placeholder !== 'string') {
-          throw new SchemaError(`parameter object's key's placeholder in parameters should be a string`)
-        }
-      }
-
-      if (!isPlainObject(parameter.value)) {
-        throw new SchemaError(`parameter object's value in parameters should be a object`)
-      }
-
-      if (parameter.value.placeholder && typeof parameter.value.placeholder !== 'string') {
-        throw new SchemaError(`parameter object's value's placeholder in parameters should be a string`)
-      }
+      checkParameterType(parameter.value, 'object', [...path, 'value'])
+      checkParameterType(parameter.value.placeholder, 'string', [...path, 'value', 'placeholder'], true)
 
       const valueTypes = [ParameterTypes.STRING, ParameterTypes.SET_OF_STRINGS, ParameterTypes.SET_OF_NUMBERS]
       if (!valueTypes.includes(parameter.value.type)) {
-        throw new SchemaError(`unknown parameter object's value's type in parameters`)
+        throw new SchemaError(`${path.join('.')}.value.type unknown parameter type`)
       }
 
       if (parameter.default && parameter.value.type === ParameterTypes.STRING) {
+        path.push('default')
         const values = Object.values(parameter.default)
-        for (let i = 0; i < values.length; i++) {
-          const value = values[i]
 
-          if (typeof value !== 'string') {
-            throw new SchemaError(`parameter object's default object values in parameters should be strings`)
-          }
+        for (let i = 0; i < values.length; i++) {
+          path.push(i)
+          checkParameterType(values[i], 'string', path)
+          path.pop()
         }
+
+        path.pop()
       }
 
       if (parameter.default && parameter.value.type === ParameterTypes.SET_OF_STRINGS) {
+        path.push('default')
         const values = Object.values(parameter.default)
         for (let i = 0; i < values.length; i++) {
+          path.push(i)
           const value = values[i]
-
-          if (!Array.isArray(value)) {
-            throw new SchemaError(`parameter object's default object values in parameters should be an array`)
-          }
+          checkParameterType(value, 'array', path)
 
           if (!value.every((v) => typeof v === 'string')) {
-            throw new SchemaError(`parameter object's default object values in parameters should be an array of strings`)
+            throw new SchemaError(`${path.join('.')} should have string values`)
           }
+          path.pop()
         }
+        path.pop()
       }
 
       if (parameter.default && parameter.value.type === ParameterTypes.SET_OF_NUMBERS) {
+        path.push('default')
+
         const values = Object.values(parameter.default)
         for (let i = 0; i < values.length; i++) {
+          path.push(i)
           const value = values[i]
 
-          if (!Array.isArray(value)) {
-            throw new SchemaError(`parameter object's default object values in parameters should be an array`)
-          }
+          checkParameterType(value, 'array', path)
 
           if (!value.every((v) => typeof v === 'number')) {
-            throw new SchemaError(`parameter object's default object values in parameters should be an array of numbers`)
+            throw new SchemaError(`${path.join('.')} should have number values`)
           }
+          path.pop()
         }
+        path.pop()
       }
     }
+
+    path.pop()
   }
 }
 
 function checkPolicy(policy) {
   if (!isPlainObject(policy)) {
-    throw new SchemaError('policy must be an object')
+    throw new SchemaError('policy must be of the type: object')
   }
 
   if (!isPlainObject(policy.rule)) {
-    throw new SchemaError('policy -> rule must be an object')
+    throw new SchemaError('policy.rule must be of the type: object')
   }
 
   if (typeof policy.rule.type !== 'string') {
-    throw new SchemaError('policy -> rule -> type must be a string')
+    throw new SchemaError('policy.rule.type must be of the type: string')
   }
 
   if (policy.rule.type !== 'rego') {
-    throw new SchemaError(`unknown policy -> rule -> type "${policy.rule.type}"`)
+    throw new SchemaError(`policy.rule.type unknown rule type`)
   }
 
   if (typeof policy.rule.value !== 'string') {
-    throw new SchemaError('policy -> rule -> value must be a string')
+    throw new SchemaError('policy.rule.value must be of the type: string')
   }
 }
 
 const decisionTypes = ['toggle', 'rego', 'string']
 function checkDecision(decision) {
-  if (!Array.isArray(decision)) {
-    throw new SchemaError('decision must be an array')
-  }
+  const path = ['decision']
+  checkParameterType(decision, 'array', path)
 
   for (let i = 0; i < decision.length; i++) {
+    path.push(i)
     const entry = decision[i]
 
-    if (!isPlainObject(entry)) {
-      throw new SchemaError('every entry in decision must be an object')
-    }
+    checkParameterType(entry, 'object', path)
 
     if (!decisionTypes.includes(entry.type)) {
-      throw new SchemaError('unknown entry type in decision')
+      throw new SchemaError(`${path}.type unknown type`)
     }
 
     if (entry.type === 'rego' || entry.type === 'string') {
-      if (typeof entry.key !== 'string' || typeof entry.value !== 'string') {
-        throw new SchemaError(`key and value in decision entry type ${entry.type} should be strings`)
-      }
+      checkParameterType(entry.key, 'string', [...path, 'key'])
+      checkParameterType(entry.value, 'string', [...path, 'value'])
     }
 
     if (entry.type === 'toggle') {
-      if (!entry.label) {
-        throw new SchemaError(`decision entry type ${entry.type} should have a label field`)
-      }
-
-      if (typeof entry.label !== 'string') {
-        throw new SchemaError(`decision entry type ${entry.type}'s label should be a string`)
-      }
+      checkParameterType(entry.label, 'string', [...path, 'label'])
 
       const toggles = entry.toggles
-      if (!Array.isArray(toggles)) {
-        throw new SchemaError(`decision entry type ${entry.type}'s toggles should be an array`)
-      }
+      path.push('toggles')
+
+      checkParameterType(toggles, 'array', path)
 
       for (let i = 0; i < toggles.length; i++) {
-        const toggle = toggles[i]
-
-        if (!isPlainObject(toggle)) {
-          throw new SchemaError(`decision entry type ${entry.type}'s toggles entry should be an object`)
-        }
-
-        if (typeof toggle.key !== 'string') {
-          throw new SchemaError(`decision entry type ${entry.type}'s toggles entry key should be a string`)
-        }
-
-        if (typeof toggle.value !== 'boolean') {
-          throw new SchemaError(`decision entry type ${entry.type}'s toggles entry value should be a boolean`)
-        }
+        path.push(i)
+        checkParameterType(toggles[i], 'object', path)
+        checkParameterType(toggles[i].key, 'string', [...path, 'key'])
+        checkParameterType(toggles[i].value, 'boolean', [...path, 'value'])
+        path.pop()
       }
+
+      path.pop()
     }
+
+    path.pop()
   }
 }
 

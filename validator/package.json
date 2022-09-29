@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.0.1",
     "esm-wallaby": "^3.2.26",
     "js-yaml": "^4.1.0"
   }
