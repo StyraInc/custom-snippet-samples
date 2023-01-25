@@ -1,6 +1,6 @@
-package global.custom_snippet_samples.samples
+package global.custom_snippet_samples.samples.entitlements
 
-# Copyright 2022 Styra Inc. All rights reserved.
+# Copyright 2023 Styra Inc. All rights reserved.
 # Use of this source code is governed by an Apache2
 # license that can be found in the LICENSE file.
 
